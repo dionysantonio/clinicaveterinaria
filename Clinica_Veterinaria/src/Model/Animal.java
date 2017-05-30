@@ -14,6 +14,7 @@ public class Animal {
     private String nome_animal;
     private int idade_animal;
     private int sexo_animal;
+    private Cliente cliente;
     
     public String Vis_Animal(){
         return "";
