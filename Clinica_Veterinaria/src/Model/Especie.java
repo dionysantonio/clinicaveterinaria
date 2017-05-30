@@ -11,4 +11,6 @@ package Model;
  */
 public class Especie {
     
+    private String nome_esp;
+    
 }

@@ -9,20 +9,21 @@ import java.util.Date;
  *
  * @author d119322
  */
-public class Tratamento {
+public class Consulta {
     
-    private Date dat_ini;
-    private Date dat_fim;
+    private Date dat_con;
+    private String historico;
     
-    private String Vis_Trat(){
+    public String Lis_Con(){
         return "";
     }
     
-    private String Con_trat(){
-        return "";
+    public String Ver_Con(){
+        return"";
     }
     
-    private int Reg_Trat(){
+    public int Reg_Con(){
         return 0;
     }
+    
 }
