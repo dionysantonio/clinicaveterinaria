@@ -4,11 +4,19 @@
  * and open the template in the editor.
  */
 package Control;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author d119322
  */
 public class Controlador_Veterinaria {
-    
+private ArrayList<Model.Animal> dadosAnimal;
+
+public void writeAnimal(String nome,String idade,String sexo){
+
+
+}   
+
 }

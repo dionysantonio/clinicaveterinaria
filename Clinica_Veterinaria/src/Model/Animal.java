@@ -13,9 +13,18 @@ public class Animal {
     
     private String nome_animal;
     private int idade_animal;
-    private int sexo_animal;
+    private String sexo_animal;
     private Cliente cliente;
     
+    Animal(String[] dados){
+    
+    nome_animal = dados[0];
+    idade_animal = Integer.parseInt(dados[1]);
+    sexo_animal = dados[2];
+
+    }
+
+
     public String Vis_Animal(){
         return "";
        
