@@ -163,4 +163,48 @@ public String[] consultaConsulta(String nome){
     return dados;
 }
 
+public void writeVeterinario(String nome, String endereco, String telefone){
+    
+    String[] dados;
+    
+    dados = new String[]{nome,endereco,telefone};
+    
+   Model.Veterinario novoVeterinario = new Model.Veterinario(dados);
+   dadosVeterinario.add(novoVeterinario);
+}   
+
+public String[] consultaVeterinario(String nome){
+    
+    Iterator<Model.Veterinario> i;
+    Model.Veterinario auxVeterinario;
+    String[] dados = new String[20];
+    String aux;
+    int n =0;
+    
+    i = dadosVeterinario.iterator();
+    auxVeterinario = i.next();
+    
+    while (i.hasNext()){
+        
+        try{
+          
+            aux = auxVeterinario.Ver_Vet();
+            if( aux.equals(nome)){
+                dados = auxVeterinario.Lis_Vet();
+                n++;
+                auxVeterinario =  i.next();
+            }else{
+                auxVeterinario = i.next();
+            }
+        
+        }catch(ArrayIndexOutOfBoundsException e){
+                auxVeterinario =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+        }
+        
+    }
+    return dados;
+}
+
+
 }
