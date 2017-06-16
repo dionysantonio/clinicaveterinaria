@@ -17,14 +17,37 @@ public class Cliente {
     private long cep_cli;
     private String email_cli;
     
+    public Cliente(String[] dados){
+        
+        nom_cli = dados[0];
+        end_cli = dados[1];
+        tel_cli = dados[2];
+        cep_cli = Integer.parseInt(dados[3]);
+        email_cli = dados[4];
+        
+    }
+    
     public int Reg_Cli(){
     
     return 0;
     };
     
-    public String Con_cli(){
+    public String Con_Cli(){
         
-        return "";
+        return nom_cli;
+    }
+    
+    public String[] Vis_Cli(){
+        String[] dados = new String[5];
+        
+        dados[0] = nom_cli;
+        dados[1] = end_cli;
+        dados[2] = tel_cli;
+        dados[3] = String.valueOf(cep_cli);
+        dados[4] = email_cli;
+        
+        
+        return dados;
     }
     
 }
