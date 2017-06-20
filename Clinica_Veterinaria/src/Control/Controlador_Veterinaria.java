@@ -11,6 +11,7 @@ import java.lang.ArrayIndexOutOfBoundsException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.HashSet;
 
 /**
  *
@@ -19,18 +20,14 @@ import java.text.ParseException;
 public class Controlador_Veterinaria {
 
 private ArrayList<Model.Cliente> dadosCliente;
-private ArrayList<Model.Consulta> dadosConsulta;
-private ArrayList<Model.Exame> dadosExame;
 private ArrayList<Model.Veterinario> dadosVeterinario;
-private ArrayList<Model.Tratamento> dadosTratamento;
+
 
 public Controlador_Veterinaria(){
     
     dadosCliente = new ArrayList<>();
-    dadosConsulta = new ArrayList<>();
-    dadosExame = new ArrayList<>();
     dadosVeterinario = new ArrayList<>();
-    dadosTratamento = new ArrayList<>();
+
 }
 
 public void writeAnimal(Model.Cliente cliente,String nome,String idade,String sexo, String especie){
@@ -74,6 +71,37 @@ public String[] consultaAnimal(Model.Cliente cliente,String nome){
         
     }
     return dados;
+}
+
+public Model.Animal retornaAnimal(Model.Cliente cliente,String nome){
+    
+    Iterator<Model.Animal> i;
+    Model.Animal auxAnimal;
+    String[] dados = new String[20];
+    String aux;
+    int n =0;
+    
+    i = cliente.getAnimal().iterator();
+    auxAnimal = i.next();
+    
+    while (i.hasNext()){
+        
+        try{
+          
+            aux = auxAnimal.Con_Animal();
+            if( aux.equals(nome)){
+                break;
+            }else{
+                auxAnimal = i.next();
+            }
+        
+        }catch(ArrayIndexOutOfBoundsException e){
+                auxAnimal =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+        }
+        
+    }
+    return (Model.Animal) i;
 }
 
 public void writeCliente(String nome,String endereco,String telefone,int cep,String email){
@@ -156,7 +184,7 @@ public Model.Cliente retornaCliente(String nome){
     
 }
 
-public void writeConsulta(Date data,String historico){
+public void writeConsulta(Model.Animal animal,Date data,String historico){
     
     String[] dados;
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -164,8 +192,23 @@ public void writeConsulta(Date data,String historico){
     dados = new String[]{formato.format(data),historico};
     
    Model.Consulta novoConsulta = new Model.Consulta(dados);
+   anima.add(novoConsulta);
+}
+
+public void writeConsulta(Date data,String historico, String des_exame){
+    
+    String[] dados;
+    Model.Exame exame = new Model.Exame();
+    
+    exame.setExame(des_exame);
+    
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+    
+    dados = new String[]{formato.format(data),historico};
+    
+   Model.Consulta novoConsulta = new Model.Consulta(dados);
    dadosConsulta.add(novoConsulta);
-}   
+}
 
 public String[] consultaConsulta(String nome){
     
@@ -243,5 +286,12 @@ public String[] consultaVeterinario(String nome){
     return dados;
 }
 
+public void writeTratamento(Model.Animal animal,Date inicio, Date fim){
+    
+      
+    
+   Model.Tratamento novoTratamento = new Model.Tratamento(inicio,fim);
+   animal.getTratamento().add(novoTratamento);
+}
 
 }

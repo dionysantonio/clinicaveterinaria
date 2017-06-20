@@ -5,6 +5,8 @@
  */
 package Model;
 import java.util.Date;
+import java.util.ArrayList;
+
 /**
  *
  * @author d119322
@@ -13,6 +15,13 @@ public class Tratamento {
     
     private Date dat_ini;
     private Date dat_fim;
+    private ArrayList<Consulta> dadosConsulta;
+    
+    public Tratamento(Date inicio, Date fim){
+        dadosConsulta = new ArrayList<>();
+        dat_ini = inicio;
+        dat_fim = fim;
+    }
     
     private String Vis_Trat(){
         return "";
@@ -24,5 +33,9 @@ public class Tratamento {
     
     private int Reg_Trat(){
         return 0;
+    }
+    
+    public ArrayList<Consulta> getConsulta(){
+        return dadosConsulta;
     }
 }

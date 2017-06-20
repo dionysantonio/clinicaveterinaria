@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author d119322
@@ -15,7 +17,8 @@ public class Animal extends Especie {
     private int idade_animal;
     private String sexo_animal;
     private Cliente cliente;
-    
+    private ArrayList<Model.Tratamento> dadosTratamento;
+     
     
     public Animal(String[] dados){
     
@@ -23,6 +26,7 @@ public class Animal extends Especie {
     idade_animal = Integer.parseInt(dados[1]);
     sexo_animal = dados[2];
     this.setEspecie(dados[3]);
+   dadosTratamento = new ArrayList<>();
     }
 
 
@@ -40,5 +44,8 @@ public class Animal extends Especie {
         return nome_animal;
     }
     
+    public ArrayList<Tratamento> getTratamento(){
+        return dadosTratamento;
+    }
     
 }
