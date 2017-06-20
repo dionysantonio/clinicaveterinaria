@@ -184,18 +184,19 @@ public Model.Cliente retornaCliente(String nome){
     
 }
 
-public void writeConsulta(Model.Animal animal,Date data,String historico){
+public void writeConsulta(Model.Tratamento trata,Date data,String historico, Model.Veterinario vet){
     
     String[] dados;
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
     
     dados = new String[]{formato.format(data),historico};
     
-   Model.Consulta novoConsulta = new Model.Consulta(dados);
-   anima.add(novoConsulta);
+   Model.Consulta novoConsulta = new Model.Consulta(dados,vet);
+   trata.getConsulta().add(novoConsulta);
 }
 
-public void writeConsulta(Date data,String historico, String des_exame){
+
+public void writeConsulta(Model.Tratamento trata,Date data,String historico, Model.Veterinario vet, String des_exame){
     
     String[] dados;
     Model.Exame exame = new Model.Exame();
@@ -206,8 +207,8 @@ public void writeConsulta(Date data,String historico, String des_exame){
     
     dados = new String[]{formato.format(data),historico};
     
-   Model.Consulta novoConsulta = new Model.Consulta(dados);
-   dadosConsulta.add(novoConsulta);
+   Model.Consulta novoConsulta = new Model.Consulta(dados,vet,exame);
+   trata.getConsulta().add(novoConsulta);
 }
 
 public String[] consultaConsulta(String nome){
@@ -292,6 +293,43 @@ public void writeTratamento(Model.Animal animal,Date inicio, Date fim){
     
    Model.Tratamento novoTratamento = new Model.Tratamento(inicio,fim);
    animal.getTratamento().add(novoTratamento);
+}
+
+public Model.Tratamento retornaTratamento(ArrayList<Model.Tratamento> trat, Date inicio){
+    
+    Iterator<Model.Tratamento> i;
+    Model.Tratamento auxTratamento;
+    String[] dados = new String[20];
+    Date aux = new Date();
+    int n =0;
+    
+    i = trat.iterator();
+    auxTratamento = i.next();
+    
+    while (i.hasNext()){
+        
+        try{
+          
+            aux = auxTratamento.Con_trat();
+            if( aux.equals(inicio)){
+                break;
+            }else{
+                auxTratamento = i.next();
+            }
+        
+        }catch(ArrayIndexOutOfBoundsException e){
+                auxTratamento =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+        }
+        
+    }
+    
+    if(i.hasNext()){
+      return null;
+    }else{
+      return (Model.Tratamento) i;    
+    } 
+    
 }
 
 }

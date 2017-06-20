@@ -27,8 +27,8 @@ public class Tratamento {
         return "";
     }
     
-    private String Con_trat(){
-        return "";
+    public Date Con_trat(){
+        return dat_ini;
     }
     
     private int Reg_Trat(){
