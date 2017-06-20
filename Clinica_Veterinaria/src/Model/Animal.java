@@ -9,19 +9,20 @@ package Model;
  *
  * @author d119322
  */
-public class Animal {
+public class Animal extends Especie {
     
     private String nome_animal;
     private int idade_animal;
     private String sexo_animal;
     private Cliente cliente;
     
+    
     public Animal(String[] dados){
     
     nome_animal = dados[0];
     idade_animal = Integer.parseInt(dados[1]);
     sexo_animal = dados[2];
-
+    this.setEspecie(dados[3]);
     }
 
 

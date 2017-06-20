@@ -17,7 +17,7 @@ import java.text.ParseException;
  * @author d119322
  */
 public class Controlador_Veterinaria {
-private ArrayList<Model.Animal> dadosAnimal;
+
 private ArrayList<Model.Cliente> dadosCliente;
 private ArrayList<Model.Consulta> dadosConsulta;
 private ArrayList<Model.Exame> dadosExame;
@@ -25,7 +25,7 @@ private ArrayList<Model.Veterinario> dadosVeterinario;
 private ArrayList<Model.Tratamento> dadosTratamento;
 
 public Controlador_Veterinaria(){
-    dadosAnimal = new ArrayList<>();
+    
     dadosCliente = new ArrayList<>();
     dadosConsulta = new ArrayList<>();
     dadosExame = new ArrayList<>();
@@ -33,17 +33,17 @@ public Controlador_Veterinaria(){
     dadosTratamento = new ArrayList<>();
 }
 
-public void writeAnimal(String nome,String idade,String sexo){
+public void writeAnimal(Model.Cliente cliente,String nome,String idade,String sexo, String especie){
     
     String[] dados;
             
-    dados = new String[]{nome,idade,sexo};
+    dados = new String[]{nome,idade,sexo,especie};
     
    Model.Animal novoAnimal = new Model.Animal(dados);
-   dadosAnimal.add(novoAnimal);
+   cliente.getAnimal().add(novoAnimal);
 }   
 
-public String[] consultaAnimal(String nome){
+public String[] consultaAnimal(Model.Cliente cliente,String nome){
     
     Iterator<Model.Animal> i;
     Model.Animal auxAnimal;
@@ -51,7 +51,7 @@ public String[] consultaAnimal(String nome){
     String aux;
     int n =0;
     
-    i = dadosAnimal.iterator();
+    i = cliente.getAnimal().iterator();
     auxAnimal = i.next();
     
     while (i.hasNext()){
@@ -117,6 +117,43 @@ public String[] consultaCliente(String nome){
         
     }
     return dados;
+}
+
+public Model.Cliente retornaCliente(String nome){
+    
+    Iterator<Model.Cliente> i;
+    Model.Cliente auxCliente;
+    String[] dados = new String[20];
+    String aux;
+    int n =0;
+    
+    i = dadosCliente.iterator();
+    auxCliente = i.next();
+    
+    while (i.hasNext()){
+        
+        try{
+          
+            aux = auxCliente.Con_Cli();
+            if( aux.equals(nome)){
+                break;
+            }else{
+                auxCliente = i.next();
+            }
+        
+        }catch(ArrayIndexOutOfBoundsException e){
+                auxCliente =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+        }
+        
+    }
+    
+    if(i.hasNext()){
+      return null;
+    }else{
+      return (Model.Cliente) i;    
+    } 
+    
 }
 
 public void writeConsulta(Date data,String historico){

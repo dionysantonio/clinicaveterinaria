@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
-
+import java.util.ArrayList;
 /**
  *
  * @author d119322
@@ -16,6 +16,7 @@ public class Cliente {
     private String tel_cli;
     private long cep_cli;
     private String email_cli;
+    private ArrayList<Animal> animal;
     
     public Cliente(String[] dados){
         
@@ -48,6 +49,10 @@ public class Cliente {
         
         
         return dados;
+    }
+    
+    public ArrayList<Animal> getAnimal(){
+        return animal;
     }
     
 }

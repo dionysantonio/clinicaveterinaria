@@ -13,4 +13,12 @@ public class Especie {
     
     private String nome_esp;
     
+    public String getEspecie(){
+        return nome_esp;
+    }
+    
+    public void setEspecie(String especie){
+        nome_esp = especie;
+    }
+    
 }
