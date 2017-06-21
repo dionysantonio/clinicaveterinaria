@@ -211,7 +211,7 @@ public void writeConsulta(Model.Tratamento trata,Date data,String historico, Mod
    trata.getConsulta().add(novoConsulta);
 }
 
-public String[] consultaConsulta(String nome){
+public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String nome){
     
     Iterator<Model.Consulta> i;
     Model.Consulta auxConsulta;
