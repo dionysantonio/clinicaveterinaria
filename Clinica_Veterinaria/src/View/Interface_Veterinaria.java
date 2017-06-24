@@ -751,14 +751,22 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                         " Email: "+resultado[2]+"<br />"+
                         " CEP: "+resultado[3]+"<br />"+
                         " E-mail: "+resultado[4]+"</html>");
+                break;
+            case 3:
+                resultado = controle.consultaAnimal(Pes_1Parametro_Edit.getText(),Pes_2Parametro_Edit.getText());
                 
+                Pes_res.setText("<html>"+"Resultado da pesquisa: "+"<br />"+
+                        " Nome: "+resultado[0]+"<br />"+
+                        " Idade: "+resultado[1]+"<br />"+
+                        " Sexo: "+resultado[2]+"</html>");
+                break;
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_Pes_PesquisarMouseClicked
 
     private void CA_GravarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CA_GravarMouseClicked
 
-            controle.writeAnimal(CA_NomeCliente.getText(), CA_NomeAnimal.getText(), CA_Idade.getText(),Ca_Sexo.getToolTipText(),CA_Especie.getText());
+            controle.writeAnimal(CA_NomeCliente.getText(), CA_NomeAnimal.getText(), CA_Idade.getText(),(Ca_Sexo.getSelectedIndex()==0 ? "Masculino" : "Feminino"),CA_Especie.getText());
             CA_Status.setText(CA_NomeAnimal.getText() + " cadastrado!");    
         // TODO add your handling code here:
     }//GEN-LAST:event_CA_GravarMouseClicked

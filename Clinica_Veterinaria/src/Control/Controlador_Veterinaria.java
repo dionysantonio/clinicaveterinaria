@@ -40,16 +40,19 @@ public void writeAnimal(String cliente,String nome,String idade,String sexo, Str
    retornaCliente(cliente).setAnimal(novoAnimal);
 }   
 
-public String[] consultaAnimal(Model.Cliente cliente,String nome){
+public String[] consultaAnimal(String cliente,String nome){
     
     Iterator<Model.Animal> i;
     Model.Animal auxAnimal;
     String[] dados = new String[20];
     String aux;
     int n =0;
+    ArrayList<Model.Animal> auxiliarAnimal;
     
-    i = cliente.getAnimal().iterator();
-    auxAnimal = i.next();
+    auxiliarAnimal = retornaCliente(cliente).getAnimal();
+    
+    i = auxiliarAnimal.iterator();
+    auxAnimal = auxiliarAnimal.get(0);
     
     while (i.hasNext()){
         
@@ -70,19 +73,25 @@ public String[] consultaAnimal(Model.Cliente cliente,String nome){
         }
         
     }
+            aux = auxAnimal.Con_Animal();
+            if( aux.equals(nome))
+                dados = auxAnimal.Vis_Animal();
     return dados;
 }
 
-public Model.Animal retornaAnimal(Model.Cliente cliente,String nome){
+public Model.Animal retornaAnimal(String cliente,String nome){
     
     Iterator<Model.Animal> i;
     Model.Animal auxAnimal;
     String[] dados = new String[20];
     String aux;
     int n =0;
+    ArrayList<Model.Animal> auxiliarAnimal;
     
-    i = cliente.getAnimal().iterator();
-    auxAnimal = i.next();
+    auxiliarAnimal = retornaCliente(cliente).getAnimal();
+    
+    i = auxiliarAnimal.iterator();
+    auxAnimal = auxiliarAnimal.get(0);
     
     while (i.hasNext()){
         
@@ -101,7 +110,12 @@ public Model.Animal retornaAnimal(Model.Cliente cliente,String nome){
         }
         
     }
-    return (Model.Animal) i;
+    aux = auxAnimal.Con_Animal();
+            if( aux.equals(nome))
+                return auxAnimal;
+            else
+                return null;
+    
 }
 
 public void writeCliente(String nome,String endereco,String telefone,int cep,String email){
