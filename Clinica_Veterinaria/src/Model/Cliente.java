@@ -25,6 +25,7 @@ public class Cliente {
         tel_cli = dados[2];
         cep_cli = Integer.parseInt(dados[3]);
         email_cli = dados[4];
+        animal = new ArrayList<>();
         
     }
     
@@ -55,4 +56,7 @@ public class Cliente {
         return animal;
     }
     
+    public void setAnimal(Animal novo){
+        animal.add(novo);
+    }
 }

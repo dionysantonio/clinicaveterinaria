@@ -30,14 +30,14 @@ public Controlador_Veterinaria(){
 
 }
 
-public void writeAnimal(Model.Cliente cliente,String nome,String idade,String sexo, String especie){
+public void writeAnimal(String cliente,String nome,String idade,String sexo, String especie){
     
     String[] dados;
             
     dados = new String[]{nome,idade,sexo,especie};
     
    Model.Animal novoAnimal = new Model.Animal(dados);
-   cliente.getAnimal().add(novoAnimal);
+   retornaCliente(cliente).setAnimal(novoAnimal);
 }   
 
 public String[] consultaAnimal(Model.Cliente cliente,String nome){
@@ -123,7 +123,7 @@ public String[] consultaCliente(String nome){
     int n =0;
     
     i = dadosCliente.iterator();
-    auxCliente = i.next();
+    auxCliente = dadosCliente.get(0);
     
     while (i.hasNext()){
         
@@ -144,6 +144,10 @@ public String[] consultaCliente(String nome){
         }
         
     }
+    aux = auxCliente.Con_Cli();
+            if( aux.equals(nome))
+                dados = auxCliente.Vis_Cli();
+    
     return dados;
 }
 
@@ -156,7 +160,7 @@ public Model.Cliente retornaCliente(String nome){
     int n =0;
     
     i = dadosCliente.iterator();
-    auxCliente = i.next();
+    auxCliente = dadosCliente.get(0);
     
     while (i.hasNext()){
         
@@ -176,10 +180,10 @@ public Model.Cliente retornaCliente(String nome){
         
     }
     
-    if(i.hasNext()){
-      return null;
+    if(auxCliente.Con_Cli().equals(nome)){
+      return auxCliente;
     }else{
-      return (Model.Cliente) i;    
+      return null;    
     } 
     
 }
@@ -220,7 +224,7 @@ public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String
     int n =0;
     
     i = dadosConsulta.iterator();
-    auxConsulta = i.next();
+    auxConsulta = dadosConsulta.get(0);
     
     while (i.hasNext()){
         
@@ -241,6 +245,9 @@ public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String
         }
         
     }
+    aux = auxConsulta.Ver_Con();
+            if( aux.equals(nome))
+                dados = auxConsulta.Lis_Con();
     return dados;
 }
 
@@ -257,19 +264,27 @@ public void writeVeterinario(String nome, String endereco, String telefone){
 public String[] consultaVeterinario(String nome){
     
     Iterator<Model.Veterinario> i;
+    ArrayList<Model.Veterinario> auxiliarVet;
     Model.Veterinario auxVeterinario;
     String[] dados = new String[20];
     String aux;
     int n =0;
     
-    i = dadosVeterinario.iterator();
-    auxVeterinario = i.next();
+    auxiliarVet = dadosVeterinario;
+    
+    i = auxiliarVet.iterator();
+    auxVeterinario = auxiliarVet.get(0);
+    
+            //condicao para verificar se é o primeiro
+    // auxVeterinario = i.next();        
+           
     
     while (i.hasNext()){
         
         try{
           
             aux = auxVeterinario.Ver_Vet();
+            
             if( aux.equals(nome)){
                 dados = auxVeterinario.Lis_Vet();
                 n++;
@@ -284,6 +299,12 @@ public String[] consultaVeterinario(String nome){
         }
         
     }
+    aux = auxVeterinario.Ver_Vet();
+
+            if( aux.equals(nome)){
+                dados = auxVeterinario.Lis_Vet();
+            } 
+     
     return dados;
 }
 
