@@ -30,7 +30,7 @@ public class Animal extends Especie {
     }
 
 
-    public String[] Vis_Animal(){
+    public String[] Ret_Animal(){
         String[] dados = new String[4];
         
         dados[0]= nome_animal;
@@ -45,7 +45,7 @@ public class Animal extends Especie {
         return nome_animal;
     }
     
-    public ArrayList<Tratamento> getTratamento(){
+    public ArrayList<Tratamento> Vis_Trat(){
         return dadosTratamento;
     }
     

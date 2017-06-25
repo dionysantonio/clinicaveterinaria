@@ -33,7 +33,21 @@ public class Consulta {
         }
     }
     
-     public Consulta(String[] dados, Veterinario vet, Exame ex){
+     public Consulta(){
+     
+    }
+    
+    public String[] Ver_Con(){
+        String[] dados = new String[5];
+        
+        dados[0] = formato.format(dat_con);
+        dados[1] = historico;
+        
+        return dados;
+    }
+    
+    
+    public void Reg_Con(String[] dados, Veterinario vet, Exame ex){
         
         formato = new SimpleDateFormat("dd/MM/yyyy");
         try{
@@ -48,21 +62,5 @@ public class Consulta {
         }
     }
     
-    public String[] Lis_Con(){
-        String[] dados = new String[5];
-        
-        dados[0] = formato.format(dat_con);
-        dados[1] = historico;
-        
-        return dados;
-    }
-    
-    public String Ver_Con(){
-        return historico;
-    }
-    
-    public int Reg_Con(){
-        return 0;
-    }
     
 }

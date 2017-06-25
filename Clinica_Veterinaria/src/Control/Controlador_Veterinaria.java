@@ -53,7 +53,7 @@ public String[] consultaAnimal(String cliente,String nome){
     ArrayList<Model.Animal> auxiliarAnimal;
     
     try{
-    auxiliarAnimal = retornaCliente(cliente).getAnimal();
+    auxiliarAnimal = retornaCliente(cliente).Vis_Animal();
     
     i = auxiliarAnimal.iterator();
     auxAnimal = auxiliarAnimal.get(0);
@@ -64,7 +64,7 @@ public String[] consultaAnimal(String cliente,String nome){
           
             aux = auxAnimal.Con_Animal();
             if( aux.equals(nome)){
-                dados = auxAnimal.Vis_Animal();
+                dados = auxAnimal.Ret_Animal();
                 n++;
                 auxAnimal =  i.next();
             }else{
@@ -79,7 +79,7 @@ public String[] consultaAnimal(String cliente,String nome){
     }
             aux = auxAnimal.Con_Animal();
             if( aux.equals(nome))
-                dados = auxAnimal.Vis_Animal();
+                dados = auxAnimal.Ret_Animal();
     }catch(java.lang.Exception e){
         
     }
@@ -95,7 +95,7 @@ public Model.Animal retornaAnimal(String cliente,String nome){
     int n =0;
     ArrayList<Model.Animal> auxiliarAnimal;
     
-    auxiliarAnimal = retornaCliente(cliente).getAnimal();
+    auxiliarAnimal = retornaCliente(cliente).Vis_Animal();
     
     i = auxiliarAnimal.iterator();
     auxAnimal = auxiliarAnimal.get(0);
@@ -131,7 +131,8 @@ public void writeCliente(String nome,String endereco,String telefone,int cep,Str
             
     dados = new String[]{nome,endereco,telefone,Integer.toString(cep),email};
     
-   Model.Cliente novoCliente = new Model.Cliente(dados);
+   Model.Cliente novoCliente = new Model.Cliente();
+   novoCliente.Reg_Cli(dados);
    dadosCliente.add(novoCliente);
 }   
 
@@ -219,7 +220,7 @@ public void writeConsulta(String cliente,String animal,String data,String histor
     dados = new String[]{(data),historico};
     
    Model.Consulta novoConsulta = new Model.Consulta(dados,retornaVeterinario(veterinario));
-   retornaTratamento(cliente,animal).getConsulta().add(novoConsulta);
+   retornaTratamento(cliente,animal).Lis_Con().add(novoConsulta);
 }
 
 
@@ -234,8 +235,9 @@ public void writeConsulta(String cliente,String animal,String data,String histor
     
     dados = new String[]{(data),historico};
     
-   Model.Consulta novoConsulta = new Model.Consulta(dados,retornaVeterinario(veterinario),exame);
-   retornaTratamento(cliente,animal).getConsulta().add(novoConsulta);
+   Model.Consulta novoConsulta = new Model.Consulta();
+   novoConsulta.Reg_Con(dados,retornaVeterinario(veterinario),exame);
+   retornaTratamento(cliente,animal).Lis_Con().add(novoConsulta);
 }
 
 public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String nome){
@@ -243,7 +245,7 @@ public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String
     Iterator<Model.Consulta> i;
     Model.Consulta auxConsulta;
     String[] dados = new String[20];
-    String aux;
+    String[] aux;
     int n =0;
     
     i = dadosConsulta.iterator();
@@ -255,7 +257,7 @@ public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String
           
             aux = auxConsulta.Ver_Con();
             if( aux.equals(nome)){
-                dados = auxConsulta.Lis_Con();
+                dados = auxConsulta.Ver_Con();
                 n++;
                 auxConsulta =  i.next();
             }else{
@@ -270,7 +272,7 @@ public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String
     }
     aux = auxConsulta.Ver_Con();
             if( aux.equals(nome))
-                dados = auxConsulta.Lis_Con();
+                dados = auxConsulta.Ver_Con();
     return dados;
 }
 
@@ -392,7 +394,8 @@ public void writeTratamento(String cliente,String animal,Date inicio, Date fim){
     
       
     
-   Model.Tratamento novoTratamento = new Model.Tratamento(inicio,fim);
+   Model.Tratamento novoTratamento = new Model.Tratamento();
+   novoTratamento.Reg_Trat(inicio,fim);
 
    retornaAnimal(cliente,animal).setTratamento(novoTratamento);
    
@@ -407,7 +410,7 @@ public Model.Tratamento retornaTratamento(String cliente, String animal){//retor
     int n =0;
     ArrayList<Model.Tratamento> auxiliarTrat;
     
-    auxiliarTrat = retornaAnimal(cliente,animal).getTratamento();
+    auxiliarTrat = retornaAnimal(cliente,animal).Vis_Trat();
     
     try{
     
@@ -438,7 +441,7 @@ public boolean consultaTratamento(String cliente, String animal,Date data){//ret
     ArrayList<Model.Tratamento> auxiliarTrat;
    
     
-    auxiliarTrat = retornaAnimal(cliente,animal).getTratamento();
+    auxiliarTrat = retornaAnimal(cliente,animal).Vis_Trat();
     
     try{
    

@@ -18,20 +18,19 @@ public class Cliente {
     private String email_cli;
     private ArrayList<Animal> animal;
     
-    public Cliente(String[] dados){
+    public Cliente(){
         
+        
+        
+    }
+    
+    public void Reg_Cli(String[] dados){
         nom_cli = dados[0];
         end_cli = dados[1];
         tel_cli = dados[2];
         cep_cli = Integer.parseInt(dados[3]);
         email_cli = dados[4];
         animal = new ArrayList<>();
-        
-    }
-    
-    public int Reg_Cli(){
-    
-    return 0;
     };
     
     public String Con_Cli(){
@@ -52,7 +51,7 @@ public class Cliente {
         return dados;
     }
     
-    public ArrayList<Animal> getAnimal(){
+    public ArrayList<Animal> Vis_Animal(){
         return animal;
     }
     

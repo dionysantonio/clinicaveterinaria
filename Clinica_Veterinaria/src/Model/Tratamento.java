@@ -18,15 +18,12 @@ public class Tratamento {
     private Date dat_fim;
     private ArrayList<Consulta> dadosConsulta;
     
-    public Tratamento(Date inicio, Date fim){
-        dadosConsulta = new ArrayList<>();
-        dat_ini = inicio;
-        dat_fim = fim;
+    public Tratamento(){
+        
     }
     
-    private String Vis_Trat(){
-        return "";
-    }
+  
+     
     
     public Date[] Con_trat(){
         
@@ -39,11 +36,13 @@ public class Tratamento {
         return dados;
     }
     
-    private int Reg_Trat(){
-        return 0;
+    public void Reg_Trat(Date inicio, Date fim){
+        dadosConsulta = new ArrayList<>();
+        dat_ini = inicio;
+        dat_fim = fim;
     }
     
-    public ArrayList<Consulta> getConsulta(){
+    public ArrayList<Consulta> Lis_Con(){
         return dadosConsulta;
     }
 }
