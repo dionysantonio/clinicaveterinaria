@@ -28,13 +28,13 @@ public class Tratamento {
         return "";
     }
     
-    public String[] Con_trat(){
+    public Date[] Con_trat(){
         
-        String[] dados = new String[2];
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date[] dados = new Date[2];
         
-        dados[0] = formato.format(dat_ini);
-        dados[1] = formato.format(dat_fim);
+        
+        dados[0] = dat_ini;
+        dados[1] = dat_fim;
         
         return dados;
     }

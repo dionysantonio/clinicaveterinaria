@@ -212,18 +212,18 @@ public Model.Cliente retornaCliente(String nome){
     
 }
 
-public void writeConsulta(String cliente,String animal,Date data,String historico, String veterinario){
+public void writeConsulta(String cliente,String animal,String data,String historico, String veterinario){
     
     String[] dados;
     
-    dados = new String[]{formato.format(data),historico};
+    dados = new String[]{(data),historico};
     
    Model.Consulta novoConsulta = new Model.Consulta(dados,retornaVeterinario(veterinario));
    retornaTratamento(cliente,animal).getConsulta().add(novoConsulta);
 }
 
 
-public void writeConsulta(String cliente,String animal,Date data,String historico, String veterinario, String des_exame){
+public void writeConsulta(String cliente,String animal,String data,String historico, String veterinario, String des_exame){
     
     String[] dados;
     Model.Exame exame = new Model.Exame();
@@ -232,7 +232,7 @@ public void writeConsulta(String cliente,String animal,Date data,String historic
     
 
     
-    dados = new String[]{formato.format(data),historico};
+    dados = new String[]{(data),historico};
     
    Model.Consulta novoConsulta = new Model.Consulta(dados,retornaVeterinario(veterinario),exame);
    retornaTratamento(cliente,animal).getConsulta().add(novoConsulta);
@@ -393,7 +393,9 @@ public void writeTratamento(String cliente,String animal,Date inicio, Date fim){
       
     
    Model.Tratamento novoTratamento = new Model.Tratamento(inicio,fim);
-   retornaAnimal(cliente,animal).getTratamento().add(novoTratamento);
+
+   retornaAnimal(cliente,animal).setTratamento(novoTratamento);
+   
 }
 
 public Model.Tratamento retornaTratamento(String cliente, String animal){//retorna ultimo
@@ -431,26 +433,30 @@ public boolean consultaTratamento(String cliente, String animal,Date data){//ret
     Iterator<Model.Tratamento> i;
     Model.Tratamento auxTratamento;
     String[] dados = new String[20];
-    String[] aux;
+    Date[] aux;
     int n =0;
     ArrayList<Model.Tratamento> auxiliarTrat;
+   
     
     auxiliarTrat = retornaAnimal(cliente,animal).getTratamento();
     
     try{
+   
     
     i = auxiliarTrat.iterator();
+
     auxTratamento = auxiliarTrat.get(0);
-    
-        while (i.hasNext()){
+
+     
+    while (i.hasNext()){
 
                     
         try{
 
                 aux = auxTratamento.Con_trat();
 
-                if( (formato.parse(aux[0]).before(data))&&(formato.parse(aux[1]).after(data))){//before testa se a data esta depois da data inicio do tratamento e after testa se a data está antes da data fim do tratamento, ou seja, testa se a data esta entre a data inicio e fim.
-                    System.out.println((formato.parse(aux[0]).before(data)) + " " + (formato.parse(aux[1]).after(data)));
+                if( ((aux[0]).before(data))&&((aux[1]).after(data))){//before testa se a data esta depois da data inicio do tratamento e after testa se a data está antes da data fim do tratamento, ou seja, testa se a data esta entre a data inicio e fim.
+                   
                     return true;
                 }else{
                     auxTratamento = i.next();
@@ -465,18 +471,36 @@ public boolean consultaTratamento(String cliente, String animal,Date data){//ret
         }
     
         aux = auxTratamento.Con_trat();
-                System.out.println((formato.parse(aux[0]).before(data)) + " " + (formato.parse(aux[1]).after(data)));
-                if( (formato.parse(aux[0]).before(data))&&(formato.parse(aux[1]).after(data))){
+                System.out.println(((aux[0]).compareTo(data)) + " q " + ((aux[1]).compareTo(data)));
+                if( ((aux[0]).before(data))&&((aux[1]).after(data))){
+                    System.out.println("Ok");
                     return true;
+                    
                 }else{
                     return false;
                 }
     }catch(java.lang.Exception e){
         return false;
     }
+}
+
+public String[][] tabelaVeterinario(){
     
+    Iterator<Model.Veterinario> i;
+    String[][] dados = new String[20][3];
+    Model.Veterinario auxVeterinario;
+    int n;
     
+    i = dadosVeterinario.iterator();
+    auxVeterinario = dadosVeterinario.get(0);
     
+    for(n=0;i.hasNext();n++){
+        auxVeterinario = i.next();//traz o primeiro elemento
+        dados[n]=auxVeterinario.Lis_Vet();
+         
+    }
+        dados[n]=auxVeterinario.Lis_Vet();
+    return dados;
 }
 
 }

@@ -49,4 +49,8 @@ public class Animal extends Especie {
         return dadosTratamento;
     }
     
+    public void setTratamento(Tratamento trat){
+        dadosTratamento.add(trat);
+    }
+    
 }
