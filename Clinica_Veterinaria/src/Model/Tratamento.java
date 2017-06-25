@@ -6,7 +6,8 @@
 package Model;
 import java.util.Date;
 import java.util.ArrayList;
-
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 /**
  *
  * @author d119322
@@ -27,8 +28,15 @@ public class Tratamento {
         return "";
     }
     
-    public Date Con_trat(){
-        return dat_ini;
+    public String[] Con_trat(){
+        
+        String[] dados = new String[2];
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        
+        dados[0] = formato.format(dat_ini);
+        dados[1] = formato.format(dat_fim);
+        
+        return dados;
     }
     
     private int Reg_Trat(){

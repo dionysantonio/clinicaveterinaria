@@ -31,11 +31,12 @@ public class Animal extends Especie {
 
 
     public String[] Vis_Animal(){
-        String[] dados = new String[3];
+        String[] dados = new String[4];
         
         dados[0]= nome_animal;
         dados[1] = String.valueOf(idade_animal);
         dados[2] = sexo_animal;
+        dados[3] = this.getEspecie();
         return dados;
        
     }

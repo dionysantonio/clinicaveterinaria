@@ -12,6 +12,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.HashSet;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -21,13 +22,13 @@ public class Controlador_Veterinaria {
 
 private ArrayList<Model.Cliente> dadosCliente;
 private ArrayList<Model.Veterinario> dadosVeterinario;
-
+private SimpleDateFormat formato;
 
 public Controlador_Veterinaria(){
     
     dadosCliente = new ArrayList<>();
     dadosVeterinario = new ArrayList<>();
-
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 }
 
 public void writeAnimal(String cliente,String nome,String idade,String sexo, String especie){
@@ -37,7 +38,9 @@ public void writeAnimal(String cliente,String nome,String idade,String sexo, Str
     dados = new String[]{nome,idade,sexo,especie};
     
    Model.Animal novoAnimal = new Model.Animal(dados);
-   retornaCliente(cliente).setAnimal(novoAnimal);
+   
+        retornaCliente(cliente).setAnimal(novoAnimal);
+   
 }   
 
 public String[] consultaAnimal(String cliente,String nome){
@@ -49,6 +52,7 @@ public String[] consultaAnimal(String cliente,String nome){
     int n =0;
     ArrayList<Model.Animal> auxiliarAnimal;
     
+    try{
     auxiliarAnimal = retornaCliente(cliente).getAnimal();
     
     i = auxiliarAnimal.iterator();
@@ -76,6 +80,9 @@ public String[] consultaAnimal(String cliente,String nome){
             aux = auxAnimal.Con_Animal();
             if( aux.equals(nome))
                 dados = auxAnimal.Vis_Animal();
+    }catch(java.lang.Exception e){
+        
+    }
     return dados;
 }
 
@@ -137,7 +144,8 @@ public String[] consultaCliente(String nome){
     int n =0;
     
     i = dadosCliente.iterator();
-    auxCliente = dadosCliente.get(0);
+    try{
+        auxCliente = dadosCliente.get(0);
     
     while (i.hasNext()){
         
@@ -161,7 +169,9 @@ public String[] consultaCliente(String nome){
     aux = auxCliente.Con_Cli();
             if( aux.equals(nome))
                 dados = auxCliente.Vis_Cli();
-    
+    }catch(java.lang.Exception e){
+        auxCliente = null;
+    }
     return dados;
 }
 
@@ -202,31 +212,30 @@ public Model.Cliente retornaCliente(String nome){
     
 }
 
-public void writeConsulta(Model.Tratamento trata,Date data,String historico, Model.Veterinario vet){
+public void writeConsulta(String cliente,String animal,Date data,String historico, String veterinario){
     
     String[] dados;
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
     
     dados = new String[]{formato.format(data),historico};
     
-   Model.Consulta novoConsulta = new Model.Consulta(dados,vet);
-   trata.getConsulta().add(novoConsulta);
+   Model.Consulta novoConsulta = new Model.Consulta(dados,retornaVeterinario(veterinario));
+   retornaTratamento(cliente,animal).getConsulta().add(novoConsulta);
 }
 
 
-public void writeConsulta(Model.Tratamento trata,Date data,String historico, Model.Veterinario vet, String des_exame){
+public void writeConsulta(String cliente,String animal,Date data,String historico, String veterinario, String des_exame){
     
     String[] dados;
     Model.Exame exame = new Model.Exame();
     
     exame.setExame(des_exame);
     
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+
     
     dados = new String[]{formato.format(data),historico};
     
-   Model.Consulta novoConsulta = new Model.Consulta(dados,vet,exame);
-   trata.getConsulta().add(novoConsulta);
+   Model.Consulta novoConsulta = new Model.Consulta(dados,retornaVeterinario(veterinario),exame);
+   retornaTratamento(cliente,animal).getConsulta().add(novoConsulta);
 }
 
 public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String nome){
@@ -286,6 +295,8 @@ public String[] consultaVeterinario(String nome){
     
     auxiliarVet = dadosVeterinario;
     
+    try{
+    
     i = auxiliarVet.iterator();
     auxVeterinario = auxiliarVet.get(0);
     
@@ -318,52 +329,154 @@ public String[] consultaVeterinario(String nome){
             if( aux.equals(nome)){
                 dados = auxVeterinario.Lis_Vet();
             } 
-     
+    
+    }catch(java.lang.Exception e){
+        
+    }        
     return dados;
 }
 
-public void writeTratamento(Model.Animal animal,Date inicio, Date fim){
+public Model.Veterinario retornaVeterinario(String nome){
+    
+    Iterator<Model.Veterinario> i;
+    ArrayList<Model.Veterinario> auxiliarVet;
+    Model.Veterinario auxVeterinario;
+    String[] dados = new String[20];
+    String aux;
+    int n =0;
+    
+    auxiliarVet = dadosVeterinario;
+    
+    try{
+    
+    i = auxiliarVet.iterator();
+    auxVeterinario = auxiliarVet.get(0);
+    
+            //condicao para verificar se é o primeiro
+    // auxVeterinario = i.next();        
+           
+    
+    while (i.hasNext()){
+        
+        try{
+          
+            aux = auxVeterinario.Ver_Vet();
+            
+            if( aux.equals(nome)){
+                dados = auxVeterinario.Lis_Vet();
+                n++;
+                auxVeterinario =  i.next();
+            }else{
+                auxVeterinario = i.next();
+            }
+        
+        }catch(ArrayIndexOutOfBoundsException e){
+                auxVeterinario =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+        }
+        
+    }
+
+            if( auxVeterinario.Ver_Vet().equals(nome)){
+                
+            } else{
+                auxVeterinario= null;
+            }
+     }catch(java.lang.Exception e){
+         auxVeterinario= null;
+     }
+    return auxVeterinario;
+}
+
+public void writeTratamento(String cliente,String animal,Date inicio, Date fim){
     
       
     
    Model.Tratamento novoTratamento = new Model.Tratamento(inicio,fim);
-   animal.getTratamento().add(novoTratamento);
+   retornaAnimal(cliente,animal).getTratamento().add(novoTratamento);
 }
 
-public Model.Tratamento retornaTratamento(ArrayList<Model.Tratamento> trat, Date inicio){
+public Model.Tratamento retornaTratamento(String cliente, String animal){//retorna ultimo
     
     Iterator<Model.Tratamento> i;
     Model.Tratamento auxTratamento;
     String[] dados = new String[20];
     Date aux = new Date();
     int n =0;
+    ArrayList<Model.Tratamento> auxiliarTrat;
     
-    i = trat.iterator();
-    auxTratamento = i.next();
+    auxiliarTrat = retornaAnimal(cliente,animal).getTratamento();
+    
+    try{
+    
+    i = auxiliarTrat.iterator();
+    auxTratamento = auxiliarTrat.get(0);
     
     while (i.hasNext()){
-        
-        try{
-          
-            aux = auxTratamento.Con_trat();
-            if( aux.equals(inicio)){
-                break;
-            }else{
+
                 auxTratamento = i.next();
-            }
-        
-        }catch(ArrayIndexOutOfBoundsException e){
-                auxTratamento =  i.next();
-                //System.out.println(bCidade.RetornarRegiao());
-        }
-        
+            
     }
     
-    if(i.hasNext()){
-      return null;
-    }else{
-      return (Model.Tratamento) i;    
-    } 
+    }catch(java.lang.Exception e){
+        auxTratamento = null;
+    }
+      return auxTratamento;     
+    
+
+
+}
+public boolean consultaTratamento(String cliente, String animal,Date data){//retorna ultimo
+    
+    Iterator<Model.Tratamento> i;
+    Model.Tratamento auxTratamento;
+    String[] dados = new String[20];
+    String[] aux;
+    int n =0;
+    ArrayList<Model.Tratamento> auxiliarTrat;
+    
+    auxiliarTrat = retornaAnimal(cliente,animal).getTratamento();
+    
+    try{
+    
+    i = auxiliarTrat.iterator();
+    auxTratamento = auxiliarTrat.get(0);
+    
+        while (i.hasNext()){
+
+                    try{
+
+                aux = auxTratamento.Con_trat();
+
+                if( (formato.parse(aux[0]).before(data))&&(formato.parse(aux[1]).after(data))){//before testa se a data esta depois da data inicio do tratamento e after testa se a data está antes da data fim do tratamento, ou seja, testa se a data esta entre a data inicio e fim.
+                    return true;
+                }else{
+                    auxTratamento = i.next();
+                }
+
+            }catch(ArrayIndexOutOfBoundsException e){
+                    return false;
+                    //System.out.println(bCidade.RetornarRegiao());
+            }
+            aux = auxTratamento.Con_trat();
+
+                if( (formato.parse(aux[0]).before(data))&&(formato.parse(aux[1]).after(data))){
+                    return true;
+                }else{
+                    return false;
+                }
+            
+        }
+    
+        aux = auxTratamento.Con_trat();
+            
+            if( formato.parse(aux[0]).before(data)&&formato.parse(aux[1]).after(data)){//before testa se a data esta depois da data inicio do tratamento e after testa se a data está antes da data fim do tratamento, ou seja, testa se a data esta entre a data inicio e fim.
+                return true;
+            }
+    }catch(java.lang.Exception e){
+        auxTratamento = null;
+    }
+      return false;     
     
 }
 

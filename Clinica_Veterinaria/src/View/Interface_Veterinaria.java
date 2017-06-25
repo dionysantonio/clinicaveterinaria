@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package View;
-
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 /**
  *
  * @author d119322
@@ -19,7 +20,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     }
     
     private Control.Controlador_Veterinaria controle= new Control.Controlador_Veterinaria();;
-                
+    private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");            
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,22 +75,35 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         CA_NomeCliente = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         CA_Status = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        IT_Data_Inicio = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        IT_Gravar = new javax.swing.JButton();
+        IT_Data_Fim = new javax.swing.JTextField();
+        IT_NomeCliente = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        IT_NomeAnimal = new javax.swing.JTextField();
+        IT_Status = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        MC_Data = new javax.swing.JTextField();
+        MC_Historico = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        MC_Exame = new javax.swing.JTextField();
+        MC_Gravar = new javax.swing.JButton();
+        MC_NomeCliente = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        MC_NomeAnimal = new javax.swing.JTextField();
+        MC_Status = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        MC_NomeVeterinario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 358));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -104,7 +118,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
 
         Pes_res.setText("Resultado da pesquisa:");
 
-        Pes_Pesquisar.setText("Pesquiser");
+        Pes_Pesquisar.setText("Pesquisar");
         Pes_Pesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Pes_PesquisarMouseClicked(evt);
@@ -116,7 +130,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 338, Short.MAX_VALUE)
+                .addGap(0, 661, Short.MAX_VALUE)
                 .addComponent(Pes_res)
                 .addGap(122, 122, 122))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -140,19 +154,19 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(Pes_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(Pes_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Pes_1Parametro)
-                    .addComponent(Pes_1Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(Pes_1Parametro_Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Pes_res)
                     .addComponent(Pes_2Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pes_2Parametro))
                 .addGap(18, 18, 18)
                 .addComponent(Pes_Pesquisar)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pesquisa", jPanel1);
@@ -212,9 +226,9 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CV_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CV_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(581, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(547, Short.MAX_VALUE)
                 .addComponent(CV_Status)
                 .addGap(281, 281, 281))
         );
@@ -235,7 +249,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(CV_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(CV_Gravar)
                 .addGap(26, 26, 26))
         );
@@ -307,7 +321,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                             .addComponent(CC_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(CC_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel12))
@@ -358,7 +372,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(CC_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(CC_Gravar)
                 .addGap(26, 26, 26))
         );
@@ -411,7 +425,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
-                                .addComponent(Ca_Sexo, 0, 137, Short.MAX_VALUE))
+                                .addComponent(Ca_Sexo, 0, 460, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(CA_Idade))))
@@ -470,7 +484,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(Ca_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CA_Status)
                 .addGap(18, 18, 18)
                 .addComponent(CA_Gravar)
@@ -479,15 +493,111 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Cadastro animal", jPanel2);
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        jLabel16.setText("Data início");
+
+        IT_Data_Inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                IT_Data_InicioActionPerformed(evt);
             }
         });
 
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        jLabel17.setText("Data fim");
+
+        IT_Gravar.setText("Gravar tratamento");
+        IT_Gravar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                IT_GravarMouseClicked(evt);
+            }
+        });
+        IT_Gravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                IT_GravarActionPerformed(evt);
+            }
+        });
+
+        IT_Data_Fim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IT_Data_FimActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Nome Cliente");
+
+        jLabel21.setText("Nome Animal");
+
+        IT_Status.setText("Aguardando...");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(IT_Gravar))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel20)
+                                        .addComponent(jLabel21))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(IT_NomeCliente)
+                                        .addComponent(IT_NomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel17)
+                                        .addComponent(jLabel16))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(IT_Data_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(IT_Data_Fim, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(IT_Status)))
+                .addContainerGap(514, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(IT_Status)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IT_NomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IT_NomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IT_Data_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IT_Data_Fim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(25, 25, 25)
+                .addComponent(IT_Gravar)
+                .addGap(22, 22, 22))
+        );
+
+        jTabbedPane4.addTab("Iniciar Tratamento", jPanel6);
+
+        MC_Data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MC_DataActionPerformed(evt);
+            }
+        });
+
+        MC_Historico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MC_HistoricoActionPerformed(evt);
             }
         });
 
@@ -497,131 +607,106 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
 
         jLabel15.setText("Exame");
 
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        MC_Exame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                MC_ExameActionPerformed(evt);
             }
         });
 
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        MC_Gravar.setText("Gravar consulta");
+        MC_Gravar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MC_GravarMouseClicked(evt);
+            }
+        });
+        MC_Gravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                MC_GravarActionPerformed(evt);
             }
         });
 
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
-            }
-        });
+        jLabel22.setText("Nome Cliente");
 
-        jLabel16.setText("Data início");
+        jLabel23.setText("Nome Animal");
 
-        jLabel17.setText("Data fim");
+        MC_Status.setText("Aguardando...");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel18.setText("Tratamento");
-
-        jButton4.setText("Gravar tratamento");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Gravar consulta");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+        jLabel24.setText("Nome Veterinario");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel15))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                            .addComponent(jTextField13))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(158, 158, 158)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(113, 113, 113)
-                                .addComponent(jLabel16))
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                            .addComponent(jTextField15))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(85, 85, 85))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(63, 63, 63))))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(jButton5)
-                    .addContainerGap(381, Short.MAX_VALUE)))
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel23))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(MC_NomeCliente)
+                                    .addComponent(MC_NomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(MC_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(MC_Historico)
+                                        .addComponent(MC_Exame, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(18, 18, 18)
+                                .addComponent(MC_NomeVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
+                        .addGap(58, 58, 58)
+                        .addComponent(MC_Gravar))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addComponent(MC_Status)))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
-                .addContainerGap(74, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                    .addContainerGap(187, Short.MAX_VALUE)
-                    .addComponent(jButton5)
-                    .addGap(21, 21, 21)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MC_Status)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MC_NomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MC_NomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MC_NomeVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(MC_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MC_Gravar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MC_Historico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(MC_Exame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
 
-        jTabbedPane4.addTab("Consulta", jPanel5);
+        jTabbedPane4.addTab("Marcar Consulta", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -635,8 +720,8 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
 
@@ -675,33 +760,33 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CC_NomeActionPerformed
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void MC_ExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MC_ExameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_MC_ExameActionPerformed
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+    private void MC_HistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MC_HistoricoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
+    }//GEN-LAST:event_MC_HistoricoActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void MC_DataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MC_DataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_MC_DataActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void IT_Data_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IT_Data_InicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_IT_Data_InicioActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void IT_Data_FimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IT_Data_FimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_IT_Data_FimActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void IT_GravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IT_GravarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_IT_GravarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void MC_GravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MC_GravarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_MC_GravarActionPerformed
 
     private void Ca_SexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ca_SexoActionPerformed
         // TODO add your handling code here:
@@ -730,7 +815,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     }//GEN-LAST:event_CC_GravarMouseClicked
 
     private void Pes_PesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Pes_PesquisarMouseClicked
-            String[] resultado;
+            String[] resultado,resultadoaux;
         switch(Pes_combobox.getSelectedIndex()){
             
             case 0:
@@ -758,18 +843,77 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                 Pes_res.setText("<html>"+"Resultado da pesquisa: "+"<br />"+
                         " Nome: "+resultado[0]+"<br />"+
                         " Idade: "+resultado[1]+"<br />"+
-                        " Sexo: "+resultado[2]+"</html>");
+                        " Sexo: "+resultado[2]+"<br />"+
+                        " Especie: "+resultado[3]+"</html>");
                 break;
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_Pes_PesquisarMouseClicked
 
     private void CA_GravarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CA_GravarMouseClicked
-
+            
+            String [] resultado;
+            resultado = controle.consultaCliente(CA_NomeCliente.getText());
+            if(resultado[0] == null){
+                CA_Status.setText(" Cliente não encontrado!");
+    }else{
             controle.writeAnimal(CA_NomeCliente.getText(), CA_NomeAnimal.getText(), CA_Idade.getText(),(Ca_Sexo.getSelectedIndex()==0 ? "Masculino" : "Feminino"),CA_Especie.getText());
-            CA_Status.setText(CA_NomeAnimal.getText() + " cadastrado!");    
+            CA_Status.setText(CA_NomeAnimal.getText() + " cadastrado!");
+            }
         // TODO add your handling code here:
     }//GEN-LAST:event_CA_GravarMouseClicked
+
+    private void IT_GravarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IT_GravarMouseClicked
+       
+        
+        
+    String [] resultado, resultado1;
+            resultado = controle.consultaCliente(IT_NomeCliente.getText());
+            resultado1 = controle.consultaAnimal(IT_NomeCliente.getText(),IT_NomeAnimal.getText());
+    if((resultado[0] == null)||(resultado1[0]==null)){
+                IT_Status.setText(" Cliente/Animal não encontrado!");
+    }else{
+                 try{
+           
+                controle.writeTratamento(IT_NomeCliente.getText(),IT_NomeAnimal.getText(), formato.parse(IT_Data_Inicio.getText()), formato.parse(IT_Data_Fim.getText()));
+                IT_Status.setText("Tratamento de "+IT_NomeAnimal.getText() + " cadastrado!");
+                 }catch(ParseException e){
+                     IT_Status.setText("Data inicio ou Data fim inseridas fora do formato DD/MM/AAAA (DIA = DD, MÊS = MM e ANO = AAAA)");
+                 }
+    }
+// TODO add your handling code here:
+    }//GEN-LAST:event_IT_GravarMouseClicked
+
+    private void MC_GravarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MC_GravarMouseClicked
+        
+        String [] resultado, resultado1,resultado2;
+        
+            resultado = controle.consultaCliente(MC_NomeCliente.getText());
+            resultado1 = controle.consultaAnimal(MC_NomeCliente.getText(),MC_NomeAnimal.getText());
+            resultado2 = controle.consultaVeterinario(MC_NomeVeterinario.getText());
+    if((resultado[0] == null)||(resultado1[0]==null)||(resultado2[0]==null)){
+                MC_Status.setText(" Cliente/Animal/Veterinario não encontrado!");
+    }else{
+                 try{
+                     
+                        if(controle.consultaTratamento(MC_NomeCliente.getText(),MC_NomeAnimal.getText(), formato.parse(MC_Data.getText()))){
+                            if("".equals(MC_Exame.getText())){
+                                controle.writeConsulta(MC_NomeCliente.getText(),MC_NomeAnimal.getText(), formato.parse(MC_Data.getText()),MC_Historico.getText(),MC_NomeVeterinario.getText());
+                            }else{
+                                controle.writeConsulta(MC_NomeCliente.getText(),MC_NomeAnimal.getText(), formato.parse(MC_Data.getText()),MC_Historico.getText(),MC_NomeVeterinario.getText(),MC_Exame.getText()); 
+                            }
+
+                            MC_Status.setText("Consulta de "+MC_NomeAnimal.getText() + " cadastrada!");
+                        }else{
+                            MC_Status.setText("Não há data de tratamento iniciada para a data de consulta inserida.");
+                        }
+                 }catch(ParseException e){
+                        MC_Status.setText("Data inserida fora do formato DD/MM/AAAA (DIA = DD, MÊS = MM e ANO = AAAA)");
+                 }
+    }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_MC_GravarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -827,6 +971,20 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     private javax.swing.JLabel CV_Status;
     private javax.swing.JTextField CV_Telefone;
     private javax.swing.JComboBox<String> Ca_Sexo;
+    private javax.swing.JTextField IT_Data_Fim;
+    private javax.swing.JTextField IT_Data_Inicio;
+    private javax.swing.JButton IT_Gravar;
+    private javax.swing.JTextField IT_NomeAnimal;
+    private javax.swing.JTextField IT_NomeCliente;
+    private javax.swing.JLabel IT_Status;
+    private javax.swing.JTextField MC_Data;
+    private javax.swing.JTextField MC_Exame;
+    private javax.swing.JButton MC_Gravar;
+    private javax.swing.JTextField MC_Historico;
+    private javax.swing.JTextField MC_NomeAnimal;
+    private javax.swing.JTextField MC_NomeCliente;
+    private javax.swing.JTextField MC_NomeVeterinario;
+    private javax.swing.JLabel MC_Status;
     private javax.swing.JLabel Pes_1Parametro;
     private javax.swing.JTextField Pes_1Parametro_Edit;
     private javax.swing.JLabel Pes_2Parametro;
@@ -834,8 +992,6 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     private javax.swing.JButton Pes_Pesquisar;
     private javax.swing.JComboBox<String> Pes_combobox;
     private javax.swing.JLabel Pes_res;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -845,9 +1001,13 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -860,11 +1020,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     // End of variables declaration//GEN-END:variables
 }
