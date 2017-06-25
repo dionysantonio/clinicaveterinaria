@@ -444,11 +444,13 @@ public boolean consultaTratamento(String cliente, String animal,Date data){//ret
     
         while (i.hasNext()){
 
-                    try{
+                    
+        try{
 
                 aux = auxTratamento.Con_trat();
 
                 if( (formato.parse(aux[0]).before(data))&&(formato.parse(aux[1]).after(data))){//before testa se a data esta depois da data inicio do tratamento e after testa se a data está antes da data fim do tratamento, ou seja, testa se a data esta entre a data inicio e fim.
+                    System.out.println((formato.parse(aux[0]).before(data)) + " " + (formato.parse(aux[1]).after(data)));
                     return true;
                 }else{
                     auxTratamento = i.next();
@@ -458,25 +460,22 @@ public boolean consultaTratamento(String cliente, String animal,Date data){//ret
                     return false;
                     //System.out.println(bCidade.RetornarRegiao());
             }
-            aux = auxTratamento.Con_trat();
-
+            
+            
+        }
+    
+        aux = auxTratamento.Con_trat();
+                System.out.println((formato.parse(aux[0]).before(data)) + " " + (formato.parse(aux[1]).after(data)));
                 if( (formato.parse(aux[0]).before(data))&&(formato.parse(aux[1]).after(data))){
                     return true;
                 }else{
                     return false;
                 }
-            
-        }
-    
-        aux = auxTratamento.Con_trat();
-            
-            if( formato.parse(aux[0]).before(data)&&formato.parse(aux[1]).after(data)){//before testa se a data esta depois da data inicio do tratamento e after testa se a data está antes da data fim do tratamento, ou seja, testa se a data esta entre a data inicio e fim.
-                return true;
-            }
     }catch(java.lang.Exception e){
-        auxTratamento = null;
+        return false;
     }
-      return false;     
+    
+    
     
 }
 
