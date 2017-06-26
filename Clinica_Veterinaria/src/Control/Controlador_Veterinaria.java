@@ -240,35 +240,41 @@ public void writeConsulta(String cliente,String animal,String data,String histor
    retornaTratamento(cliente,animal).Lis_Con().add(novoConsulta);
 }
 
-public String[] consultaConsulta(ArrayList<Model.Consulta> dadosConsulta, String nome){
+public String[] consultaConsulta(String cliente,String animal){
     
-    Iterator<Model.Consulta> i;
+    Iterator<Model.Tratamento> i;
+    Iterator<Model.Consulta> it;
     Model.Consulta auxConsulta;
-    String[] dados = new String[20];
+    String[][] dados = new String[20][4];
     String[] aux;
     int n =0;
+    ArrayList<Model.Tratamento> auxTratamento;
+    Model.Tratamento auxiliarTrat;
     
-    i = dadosConsulta.iterator();
-    auxConsulta = dadosConsulta.get(0);
+    auxTratamento = retornaAnimal(cliente,animal).Vis_Trat();
+    
+    i = auxTratamento.iterator();
+    auxiliarTrat = auxTratamento.get(0);
     
     while (i.hasNext()){
-        
+        it = auxiliarTrat.Lis_Con().iterator();
+        while (it.hasNext()){
         try{
           
             aux = auxConsulta.Ver_Con();
             if( aux.equals(nome)){
                 dados = auxConsulta.Ver_Con();
                 n++;
-                auxConsulta =  i.next();
+                auxConsulta =  it.next();
             }else{
-                auxConsulta = i.next();
+                auxConsulta = it.next();
             }
         
         }catch(ArrayIndexOutOfBoundsException e){
                 auxConsulta =  i.next();
                 //System.out.println(bCidade.RetornarRegiao());
         }
-        
+        }  
     }
     aux = auxConsulta.Ver_Con();
             if( aux.equals(nome))

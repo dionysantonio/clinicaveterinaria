@@ -937,6 +937,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                         " Sexo: "+resultado[2]+"<br />"+
                         " Especie: "+resultado[3]+"</html>");
                 break;
+            
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_Pes_PesquisarMouseClicked
