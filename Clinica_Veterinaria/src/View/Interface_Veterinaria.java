@@ -384,7 +384,6 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                         .addComponent(CA_Especie, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(89, 89, 89))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addGap(129, 129, 129))))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -718,7 +717,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addComponent(jButton1)
-                .addContainerGap(491, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1012,7 +1011,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         String [][] dados= controle.tabelaVeterinario();
         
         
-        for(x=0,y=0;dados[y][x]!= null;y++)  
+        for(x=0,y=0;y<10;y++)  
             for(x=0;x<3;x++)
                  jTable1.setValueAt(dados[y][x], y, x);
         

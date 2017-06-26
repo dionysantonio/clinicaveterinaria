@@ -474,7 +474,7 @@ public boolean consultaTratamento(String cliente, String animal,Date data){//ret
         }
     
         aux = auxTratamento.Con_trat();
-                System.out.println(((aux[0]).compareTo(data)) + " q " + ((aux[1]).compareTo(data)));
+                
                 if( ((aux[0]).before(data))&&((aux[1]).after(data))){
                     System.out.println("Ok");
                     return true;
@@ -515,6 +515,7 @@ public String[][] retornarAnimal(String cliente){
     int n = 0;
     
     clienteAux = retornaCliente(cliente).Vis_Animal();
+    
     i=clienteAux.iterator();
     aux = i.next().Ret_Animal();
     dados[n]=aux;
