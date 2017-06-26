@@ -32,14 +32,6 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane4 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        Pes_1Parametro = new javax.swing.JLabel();
-        Pes_2Parametro = new javax.swing.JLabel();
-        Pes_combobox = new javax.swing.JComboBox<>();
-        Pes_1Parametro_Edit = new javax.swing.JTextField();
-        Pes_2Parametro_Edit = new javax.swing.JTextField();
-        Pes_res = new javax.swing.JLabel();
-        Pes_Pesquisar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         CV_Nome = new javax.swing.JTextField();
@@ -107,6 +99,14 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        Pes_1Parametro = new javax.swing.JLabel();
+        Pes_2Parametro = new javax.swing.JLabel();
+        Pes_combobox = new javax.swing.JComboBox<>();
+        Pes_1Parametro_Edit = new javax.swing.JTextField();
+        Pes_2Parametro_Edit = new javax.swing.JTextField();
+        Pes_res = new javax.swing.JLabel();
+        Pes_Pesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(750, 358));
@@ -115,69 +115,6 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-
-        Pes_1Parametro.setText("Nome: ");
-
-        Pes_2Parametro.setText("Nome_Animal: ");
-
-        Pes_combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Veterinario", "Cliente", "Consulta", "Animal" }));
-
-        Pes_res.setText("Resultado da pesquisa:");
-
-        Pes_Pesquisar.setText("Pesquisar");
-        Pes_Pesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Pes_PesquisarMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Pes_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Pes_1Parametro)
-                            .addComponent(Pes_2Parametro))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Pes_Pesquisar)
-                            .addComponent(Pes_1Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pes_2Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(246, 246, 246)
-                .addComponent(Pes_res)
-                .addContainerGap(446, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(Pes_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pes_1Parametro)
-                    .addComponent(Pes_1Parametro_Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Pes_2Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pes_2Parametro)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(Pes_res)))
-                .addGap(18, 18, 18)
-                .addComponent(Pes_Pesquisar)
-                .addContainerGap(520, Short.MAX_VALUE))
-        );
-
-        jTabbedPane4.addTab("Pesquisa", jPanel1);
 
         jLabel5.setText("Nome");
 
@@ -805,6 +742,69 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Relatório", jPanel7);
 
+        Pes_1Parametro.setText("Nome: ");
+
+        Pes_2Parametro.setText("Nome_Animal: ");
+
+        Pes_combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Veterinario", "Cliente", "Consulta", "Animal" }));
+
+        Pes_res.setText("Resultado da pesquisa:");
+
+        Pes_Pesquisar.setText("Pesquisar");
+        Pes_Pesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Pes_PesquisarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Pes_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Pes_1Parametro)
+                            .addComponent(Pes_2Parametro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Pes_Pesquisar)
+                            .addComponent(Pes_1Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pes_2Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(94, 94, 94)
+                .addComponent(Pes_res, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(520, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Pes_combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Pes_1Parametro)
+                            .addComponent(Pes_1Parametro_Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Pes_2Parametro_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pes_2Parametro))
+                        .addGap(18, 18, 18)
+                        .addComponent(Pes_Pesquisar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(Pes_res, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(520, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Pesquisa", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -913,6 +913,8 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
 
     private void Pes_PesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Pes_PesquisarMouseClicked
             String[] resultado,resultadoaux;
+            String[][] animais;
+            String aux;
         switch(Pes_combobox.getSelectedIndex()){
             
             case 0:
@@ -926,6 +928,8 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                 break;
             case 1:
                 resultado = controle.consultaCliente(Pes_1Parametro_Edit.getText());
+                //animais = controle.retornarAnimal(Pes_1Parametro_Edit.getText());
+                int i = 0,n = 0;
                 
                 Pes_res.setText("<html>"+"Resultado da pesquisa: "+"<br />"+
                         " Nome: "+resultado[0]+"<br />"+
@@ -933,6 +937,12 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
                         " Email: "+resultado[2]+"<br />"+
                         " CEP: "+resultado[3]+"<br />"+
                         " E-mail: "+resultado[4]+"</html>");
+                /*for(;i<animais.length;i++){
+                    aux = (aux+"<br />"+
+                            animais[i][0]+" "+animais[i][3]);
+                }
+                aux = (Pes_res.getText()+"</html>");
+                Pes_res.setText(Pes_res.getText()+"</html>");*/
                 break;
             case 3:
                 resultado = controle.consultaAnimal(Pes_1Parametro_Edit.getText(),Pes_2Parametro_Edit.getText());
@@ -1017,7 +1027,7 @@ public class Interface_Veterinaria extends javax.swing.JFrame {
         String [][] dados= controle.tabelaVeterinario();
         
         
-        for(x=0,y=0;y<2;y++)  
+        for(x=0,y=0;dados[y][x]!= null;y++)  
             for(x=0;x<3;x++)
                  jTable1.setValueAt(dados[y][x], y, x);
         

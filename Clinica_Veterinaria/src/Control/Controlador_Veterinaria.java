@@ -506,4 +506,30 @@ public String[][] tabelaVeterinario(){
     return dados;
 }
 
+public String[][] retornarAnimal(String cliente){
+    
+    String[][] dados = new String[20][4];
+    String[] aux;
+    ArrayList<Model.Animal> clienteAux;
+    Iterator<Model.Animal> i;
+    int n = 0;
+    
+    clienteAux = retornaCliente(cliente).Vis_Animal();
+    i=clienteAux.iterator();
+    aux = i.next().Ret_Animal();
+    dados[n]=aux;
+    n++;
+    while(i.hasNext()){
+        
+        aux = i.next().Ret_Animal();
+        dados[n]=aux;
+        n++;      
+        System.out.println(dados[n][0]);
+        
+    }
+    System.out.println(dados[n][0]);
+    return dados;    
+    
+}
+
 }
